@@ -55,7 +55,6 @@
     ]
   },
   "devDependencies": {
-    "cordova-ios": "^6.2.0",
     "cordova-plugin-screen-orientation": "^3.0.2",
     "cordova-plugin-statusbar": "^3.0.0",
     "cordova-res": "^0.15.4",
@@ -66,8 +65,6 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-screen-orientation": {}
     },
-    "platforms": [
-      "ios"
-    ]
+    "platforms": []
   }
 }
