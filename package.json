@@ -1,7 +1,7 @@
 {
   "name": "react-cordova",
   "displayName": "react-cordova",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "Sample project start with react typescript 18.* and cordova",
   "homepage": "./",
   "dependencies": {

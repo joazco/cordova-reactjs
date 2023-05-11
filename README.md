@@ -71,8 +71,18 @@ They needs to be 432x432 pixels.
 
 ### Splashscreen
 
-Android need an xml at resources/splash.xml [see more](https://developer.android.com/develop/ui/views/launch/splash-screen).
-You can change background color at resources/colors.xml.
+[See official documentation](https://developer.android.com/develop/ui/views/launch/splash-screen).
+
+You can change image and color on config.xml file:
+
+```xml
+...
+    <platform name="android">
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="resources/ic_cdv_splashscreen.png" />
+        <preference name="AndroidWindowSplashScreenBackground" value="#a5a5a5" />
+        .....
+    </platform>
+```
 
 ## Browser
 
