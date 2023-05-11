@@ -6,6 +6,9 @@ module.exports = () => {
   return new Promise((resolve, reject) => {
     Promise.all([execEditConfig(), execBuildReact(), execBuildResources()])
       .then(resolve)
-      .catch(reject);
+      .catch((error) => {
+        console.log("Error before_prepare.js\n");
+        reject(error);
+      });
   });
 };

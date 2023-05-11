@@ -6,11 +6,13 @@ const execCopyConfig = require("./copyconfig");
 
 function renameOutputFolder(buildFolderPath, outputFolderPath) {
   return new Promise((resolve, reject) => {
-    fs.rename(buildFolderPath, outputFolderPath, (err) => {
-      if (err) {
-        reject(err);
+    fs.rename(buildFolderPath, outputFolderPath, (error) => {
+      if (error) {
+        reject(`File hooks/modules/buildreact.js line 30.
+        \nError to rename folder build.
+        \nError: ${error}`);
       } else {
-        resolve("Successfully built!");
+        resolve("ReactJS successfully built!");
       }
     });
   });
@@ -20,14 +22,16 @@ function execPostReactBuild(buildFolderPath, outputFolderPath) {
   return new Promise((resolve, reject) => {
     if (fs.existsSync(buildFolderPath)) {
       if (fs.existsSync(outputFolderPath)) {
-        rimraf(outputFolderPath, (err) => {
-          if (err) {
-            reject(err);
+        rimraf(outputFolderPath, (error) => {
+          if (error) {
+            reject(`File hooks/modules/buildreact.js line 19.
+            \nError to remove folder build.
+            \nError: ${error}`);
             return;
           }
           renameOutputFolder(buildFolderPath, outputFolderPath)
             .then((val) => resolve(val))
-            .catch((e) => reject(e));
+            .catch((error) => reject(error));
         });
       } else {
         renameOutputFolder(buildFolderPath, outputFolderPath)
@@ -50,8 +54,11 @@ const execBuildReact = () => {
   return new Promise((resolve, reject) => {
     exec(`${projectPath} build`, (error) => {
       if (error) {
-        console.error(error);
-        reject(error);
+        reject(
+          `File hooks/modules/buildreact.js line 43.
+          \nError to build reactjs.
+          \nError: ${error}`
+        );
         return;
       }
       execPostReactBuild(
@@ -59,11 +66,9 @@ const execBuildReact = () => {
         path.join(__dirname, "../../www/")
       )
         .then((s) => {
-          console.log(s);
           resolve(s);
         })
         .catch((e) => {
-          console.error(e);
           reject(e);
         });
     });

@@ -9,7 +9,9 @@ function execBuildResources() {
     );
     exec(`node ${cordovaResPath}`, (error) => {
       if (error) {
-        reject();
+        reject(`File hooks/modules/buildresources.js line 5.
+        \nError to generate resources with cordova-res.
+        \nError: ${error}`);
         return;
       }
       resolve();
